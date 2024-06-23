@@ -163,6 +163,11 @@ def getMove(s, player, board):
             return intMove
         prompt = 'Not a valid move. Try again.'
 
+def playAgainPrompt():
+    s = turtle.Screen()
+    prompt = 'Do you want to play again [0:Yes 1:No]?'
+    answer = s.numinput("", prompt, default=None, minval = 0, maxval = 1)
+    return answer
 
 #playTicTacToe()
 
@@ -436,6 +441,11 @@ def playTicTacToe():
         player, nextPlayer = nextPlayer, player #switch variables to make nextplayer the current variable
 
     showExitMessage(t, winner)
-    s.exitonclick()
+    answer = playAgainPrompt()
+    if answer == 0:
+        s.clear()
+        playTicTacToe()
+    else:
+        s.exitonclick()
 
 playTicTacToe()
