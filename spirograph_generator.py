@@ -100,14 +100,23 @@ def squareSwirl(size, colors):
         t.forward(5+i)
         t.right(91)
 
-
+def snowflake1(size, colors):
+    for i in range(10):
+        for i in range(2):
+            t.color(random.choice(colors))
+            t.fd(size)
+            t.right(60)
+            t.fd(size)
+            t.right(120)
+        t.right(36)
+        
 def generateSpirograph():
     
     # Get shape input and size and make sure it is one of the possibilities
     shape = ''
     while (not(shape =='square' or shape =='circle' or shape =='hexagon' or shape =='triangle' or 
-            shape =='star' or shape =='swirly' or shape =='squareSwirl')):
-        shape = input('- square\n- circle\n- hexagon\n- triangle\n- star\n- swirly\n- squareSwirl\n') 
+            shape =='star' or shape =='swirly' or shape =='squareSwirl' or shape == 'snowflake')):
+        shape = input('- square\n- circle\n- hexagon\n- triangle\n- star\n- swirly\n- squareSwirl\n- snowflake\n=>') 
     
     #Getting size
     general_size = ''
@@ -139,6 +148,8 @@ def generateSpirograph():
         swirly(size, colors)
     elif shape == 'squareSwirl':
         squareSwirl(size, colors)
+    elif shape == 'snowflake':
+        snowflake1(size/2, colors)
 
     playAgain = input("Do you want to play again? ").lower()
     if playAgain == 'yes':
@@ -151,6 +162,7 @@ def generateSpirograph():
         t.pensize(2)
         generateSpirograph()
     else:
+        print('Click screen to exit.')
         s.exitonclick()
         
 generateSpirograph()
