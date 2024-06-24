@@ -10,6 +10,7 @@ def randomColorGenerator():
 def circularPage():
     speed(100)
     width(1)
+    hideturtle()
     colormode(255)
     bgcolor("black")
 
